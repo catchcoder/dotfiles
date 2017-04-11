@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
-
+Plugin 'scrooloose/syntastic'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -51,7 +51,7 @@ filetype plugin on
 set autoindent
 " }}}
 " UI Layout {{{
-set number              " show line numbers
+" set number              " show line numbers
 set showcmd             " show command in bottom bar
 set nocursorline        " highlight current line
 set wildmenu
@@ -75,35 +75,8 @@ set foldlevelstart=10   " start with fold level of 1
 " Line Shortcuts {{{
 nnoremap j gj
 nnoremap k gk
-nnoremap gV `[v`]
 " }}}
-" Leader Shortcuts {{{
-let mapleader=","
-nnoremap <leader>m :silent make\|redraw!\|cw<CR>
-nnoremap <leader>h :A<CR>
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>et :exec ":vsp /Users/dblack/notes/vim/" . strftime('%m-%d-%y') . ".md"<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>l :call ToggleNumber()<CR>
-nnoremap <leader><space> :noh<CR>
-nnoremap <leader>s :mksession<CR>
-nnoremap <leader>a :Ag 
-nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
-nnoremap <leader>1 :set number!<CR>
-nnoremap <leader>d :Make! 
-nnoremap <leader>r :TestFile<CR>
-nnoremap <leader>g :call RunGoFile()<CR>
-vnoremap <leader>y "+y
-" }}}
-
-" CtrlP {{{
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
-" }}}
-" Syntastic {{{
+" Syntastic {{{ 
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
@@ -123,24 +96,12 @@ augroup configgroup
     autocmd BufEnter *.md setlocal ft=markdown
 augroup END
 " }}}
-" Testing {{{
-let test#strategy = 'neovim'
-let test#python#runner = 'nose'
-" }}}
-" Backups {{{
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
-" }}}
 " Custom Functions {{{
 function! ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
+    if(&number == 1)
+        set nonumber
     else
-        set relativenumber
+        set number
     endif
 endfunc
 
