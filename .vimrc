@@ -5,6 +5,10 @@ filetype off                  " required
 " Install Vundle plugin Manager
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " Vundle {{{
+" to run :PluginInstall
+" to search for plugins :PluginSearch
+" Vim Plugins https://vimawesome.com/
+"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " " alternatively, pass a path where Vundle should install plugins
@@ -15,6 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
