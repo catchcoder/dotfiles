@@ -6,8 +6,8 @@ sudo apt install libncurses5-dev libgnome2-dev libgnomeui-dev \
     python3-dev git  -y
 
 
-sudo apt-get remove vim vim-runtime gvim -y
-sudo apt-get remove vim-tiny vim-common vim-gui-common -y
+# sudo apt-get remove vim vim-runtime gvim -y
+# sudo apt-get remove vim-tiny vim-common vim-gui-common -y
 
 
 cd ~
@@ -20,14 +20,13 @@ cd ~vim
             --enable-python3interp=yes \
             --enable-gui=gtk2 \
             --enable-cscope \
-            --prefix=/usr
-make VIMRUNTIMEDIR=/usr/share/vim/vim80
+            --prefix=/usr/local
 
 sudo make install
 
-sudo apt install checkinstall
-cd ~/vim
-sudo checkinstall
+# sudo apt install checkinstall
+# cd ~/vim
+# sudo checkinstall
 
 
 sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
