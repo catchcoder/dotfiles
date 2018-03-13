@@ -20,7 +20,7 @@ cd ~vim
             --enable-python3interp=yes \
             --enable-gui=gtk2 \
             --enable-cscope \
-            --prefix=/usr/local
+            --prefix=/usr
 
 sudo make install
 
